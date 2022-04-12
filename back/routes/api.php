@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/*** AUTH ROUTE ***/
+Route::any('auth/create', [RegisterController::class, 'createUser']);
+
+Route::any('auth/login', [RegisterController::class, 'loginUser']);
+Route::any('auth/logout', [RegisterController::class, 'logoutUser']);
+Route::any('auth/error404', [RegisterController::class, 'error404']);
